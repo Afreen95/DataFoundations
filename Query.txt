@@ -1,0 +1,33 @@
+/* Query 1 - query used for first insight */
+SELECT Artist.Name, COUNT(Album.ArtistId) as NoOfAlbums From Artist INNER JOIN Album
+WHERE Artist.ArtistId = Album.ArtistId
+GROUP BY ARTIST.Name
+ORDER BY COUNT(Album.ArtistId) DESC
+
+
+/* Query 2 - query used for second insight */
+SELECT Milliseconds, Artist.Name from Track inner join Album
+on Track.AlbumId = Album.AlbumId 
+inner join Artist
+ON Album.ArtistId = Artist.ArtistId
+ORDER BY Milliseconds DESC
+limit 5
+
+
+/* Query 3 - query used for Third insight */
+SELECT Artist.Name, count(TRACK.GenreId) as NoOfJazzSongs from Track inner join Album
+on Track.AlbumId = Album.AlbumId
+inner join Artist
+on Album.ArtistId = Artist.ArtistId
+WHERE TRACK.GenreId = 2
+GROUP BY artist.Name
+order BY count(TRACK.GenreId) desc
+LIMIT 10
+
+
+/* Query 4 - query used for Fourth insight */
+Select MediaType.Name, Count( MediaType.Name) as Count from Track
+inner join MediaType
+where Track.MediaTypeId = MediaType.MediaTypeId
+GROUP BY  MediaType.Name
+ORDER BY COUNT( MediaType.Name) DESC
